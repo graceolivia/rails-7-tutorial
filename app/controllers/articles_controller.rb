@@ -1,4 +1,7 @@
 class ArticlesController < ApplicationController
+
+  http_basic_authenticate_with name: "dhh", password: "secret", only: :destroy
+
   def index
     @articles = Article.all
   end
@@ -9,7 +12,7 @@ class ArticlesController < ApplicationController
 
   def new
     @article = Article.new
-  end
+  endxs
 
   def create
     @article = Article.new(article_params)
@@ -47,3 +50,4 @@ class ArticlesController < ApplicationController
       params.require(:article).permit(:title, :body, :status)
     end
   end
+end
